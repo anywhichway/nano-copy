@@ -1,0 +1,40 @@
+{
+  "name": "nano-copy",
+  "version": "0.0.1",
+  "description": "Superfast, super small JavaScript object deep copy.",
+  "main": "index.js",
+  "client": "./browser/nano-copy.js",
+  "reveal": true,
+  "isomorphic": true,
+  "scripts": {
+    "prepublish": "cp index.js browser/nano-copy.js && npm run minify",
+    "minify": "minify browser/nano-copy.js > browser/nano-copy.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anywhichway/nano-copy.git"
+  },
+  "keywords": [
+    "fast-copy",
+    "copy",
+    "fast-deepclone",
+    "ramda",
+    "deepclone"
+  ],
+  "author": "Simon Y. Blackwell <syblackwell@anywhichway.com> (http://www.github.com/anywhichway)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anywhichway/nano-copy/issues"
+  },
+  "homepage": "https://github.com/anywhichway/nano-copy#readme",
+  "devDependencies": {
+    "benchtest": "^2.0.7",
+    "blanket": "^1.2.3",
+    "chai": "^4.2.0",
+    "codacy-coverage": "^3.4.0",
+    "codeclimate-test-reporter": "^0.5.1",
+    "fast-copy": "^2.1.0",
+    "mocha": "^8.0.1"
+  },
+  "dependencies": {}
+}
