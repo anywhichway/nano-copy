@@ -1,6 +1,6 @@
 {
   "name": "nano-copy",
-  "version": "0.0.1",
+  "version": "0.0.1b",
   "description": "Superfast, super small JavaScript object deep copy.",
   "main": "index.js",
   "client": "./browser/nano-copy.js",

@@ -1,17 +1,29 @@
 const deepEqual = (a,b,checked=new WeakSet()) => {
-	const atype = typeof(a), btype = typeof(b);
 	if(a===b) return true;
+	const atype = typeof(a), btype = typeof(b);
 	if(atype!==btype || Object.getPrototypeOf(a)!=Object.getPrototypeOf(b) || (a && b && a.length!==b.length)) return false;
 	if(atype==="number" && isNaN(a) && !isNaN(b)) return false;
 	if(atype==="object" && a && b && !checked.has(a)) {
 		checked.add(a);
-		if(Object.keys(a).length!==Object.keys(b).length) return false;
-		if(typeof(a.size)==="function") {
-			if(!typeof(b.size)!=="function") return false;
-			if(a.size()!==b.size()) return false;
+		if(typeof(a.size)==="number") { // for iterables
+			if(a.size!==b.size) return false;
 		}
+		if(typeof(a.length)==="number") {
+			if(a.length!==b.length) return false;
+		}
+		if(typeof(a.type)==="string") { // for Blob
+			if(a.type!==b.type) return false;
+		}
+		if(a.buffer) { // for DataView
+			if(a.byteLength!==b.byteLength) return false;
+			if(a.byteOffset!==b.byteOffset) return false;
+			return deepEqual(a.buffer,b.buffer);
+		}
+		if(Object.keys(a).length!==Object.keys(b).length) return false;
 		for(const key in a) {
-			if(!deepEqual(a[key],b[key],checked)) return false;
+			if(!deepEqual(a[key],b[key],checked)) {
+				return false;
+			}
 		}
 		if(a instanceof Date && a.getTime()!==b.getTime()) return false;
 		if(a instanceof RegExp) return a.toString() === a.toString();
@@ -19,7 +31,7 @@ const deepEqual = (a,b,checked=new WeakSet()) => {
 			if(typeof(b.entries)!=="function") return false;
 			const bentries = Array.from(b.entries());
 			for(const [akey,avalue] of a.entries()) {
-				if(!bentries.some(([bkey,bvalue]) => akey===bkey && deepEqual(avalue,bvalue,checked))) return false;
+				if(!bentries.some(([bkey,bvalue]) =>  deepEqual(akey,bkey,checked) && deepEqual(avalue,bvalue,checked))) return false;
 			}
 		}
 	}
@@ -51,6 +63,8 @@ const complexObject = Object.assign({}, simpleObject, {
   },
   	map: new Map().set('foo', { bar: { baz: 'quz' } }),
 	nan: NaN,
+	blob: new Blob(["blob"],{type:"text/plain"}),
+	dataview : new DataView(new ArrayBuffer(16),12,4),
 	object: { foo: { bar: 'baz' } },
 //  promise: Promise.resolve('foo'),
   	regexp: /foo/,
@@ -74,26 +88,26 @@ circularObject.deeply.nested.reference = circularObject;
 
 
 describe("Test",function() {
-	xit("simple nano-copy",function() {
+	it("simple nano-copy",function() {
 		var result = nanoCopy(simpleObject)
 		expect(deepEqual(simpleObject,result)).to.equal(true);
 	});
-	xit("simple fast-copy",function() {
+	it("simple fast-copy",function() {
 		var result = copy(simpleObject)
 		expect(deepEqual(simpleObject,result)).to.equal(true);
 	});
-	xit("simple nano-copy for performance #",function() {
+	it("simple nano-copy for performance #",function() {
 		nanoCopy(simpleObject)
 	});
-	xit("simple fast-copy for performance #",function() {
+	it("simple fast-copy for performance #",function() {
 		copy(simpleObject)
 	});
 	it("complex nano-copy",function() {
-		var result = nanoCopy(complexObject)
+		var result = nanoCopy(complexObject);
 		expect(deepEqual(complexObject,result)).to.equal(true);
 	});
 	it("complex fast-copy",function() {
-		var result = copy(complexObject)
+		var result = copy(complexObject);
 		expect(deepEqual(complexObject,result)).to.equal(true);
 	});
 	it("complex nano-copy for performance #",function() {
@@ -117,3 +131,4 @@ describe("Test",function() {
 		copy(circularObject)
 	});
 });
+
