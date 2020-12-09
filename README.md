@@ -56,6 +56,6 @@ Types returned by `typeof` plus,
 const copy = nanoCopy(source);
 ```
 
-Release History (Reverse Chronological Order)
+## Release History (Reverse Chronological Order)
 
 2020-12-09 v0.0.1 Initial public release (BETA)
