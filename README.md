@@ -10,7 +10,7 @@ npm install nano-copy
 ```
 
 ```
-const nano-copy = require("nano-copy");
+const nanoCopy = require("nano-copy");
 ```
 
 or 
@@ -54,7 +54,7 @@ Types returned by `typeof` plus,
 ## API
 
 ```
-const copy = nano-copy(source);
+const copy = nanoCopy(source);
 ```
 
 ## Benchmarks
@@ -116,6 +116,8 @@ due to browser, operating system, and garbage collection driven impacts.
 
 
 ## Release History (Reverse Chronological Order)
+
+2020-12-10 v0.0.4b Documentation fixes.
 
 2020-12-10 v0.0.3b Fixed node export. Added benchee benchmarks.
 
