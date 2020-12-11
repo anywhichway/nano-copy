@@ -74,7 +74,7 @@ due to browser, operating system, and garbage collection driven impacts.
 | deepclone        | 576,936   |
 | ramda            | 562,043   |
 
-## complex object.
+### complex object.
 
 | Name             | Ops / sec |
 | ---------------- | --------- |
