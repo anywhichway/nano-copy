@@ -10,7 +10,7 @@ npm install nano-copy
 ```
 
 ```
-const nanoCopy = require("nano-copy");
+const nano-copy = require("nano-copy");
 ```
 
 or 
@@ -54,7 +54,7 @@ Types returned by `typeof` plus,
 ## API
 
 ```
-const copy = nanoCopy(source);
+const copy = nano-copy(source);
 ```
 
 ## Benchmarks
@@ -62,74 +62,51 @@ const copy = nanoCopy(source);
 Note, ALL JavaScript benchmarks in a browser or Node.js or Deno should be taken with a grain of salt when packages are within 10 ro 15% of each other
 due to browser, operating system, and garbage collection driven impacts.
 
-
 ### simple object.
 
-┌──────────────────┬───────────┐
 | Name             | Ops / sec |
-├──────────────────┼───────────┤
-| nanocopy         | 3,022,398 |
-├──────────────────┼───────────┤
+| ---------------- | --------- |
+| nano-copy        | 3,022,398 |
 | fast-copy        | 2,442,471 |
-├──────────────────┼───────────┤
 | lodash.cloneDeep | 1,028,148 |
-├──────────────────┼───────────┤
 | clone            | 996,120   |
-├──────────────────┼───────────┤
 | fast-clone       | 650,103   |
-├──────────────────┼───────────┤
 | deepclone        | 576,936   |
-├──────────────────┼───────────┤
 | ramda            | 562,043   |
-└──────────────────┴───────────┘
 
 ## complex object.
 
-┌──────────────────┬───────────┐
 | Name             | Ops / sec |
-├──────────────────┼───────────┤
-| nanocopy         | 77,088    |
-├──────────────────┼───────────┤
+| ---------------- | --------- |
+| nano-copy        | 77,088    |
 | ramda            | 68,791    |
-├──────────────────┼───────────┤
 | deepclone        | 66,892    |
-├──────────────────┼───────────┤
 | fast-copy        | 66,825    |
-├──────────────────┼───────────┤
 | fast-clone       | 44,917    |
-├──────────────────┼───────────┤
 | clone            | 33,022    |
-├──────────────────┼───────────┤
 | lodash.cloneDeep | 24,610    |
-└──────────────────┴───────────┘
 
 
 ### circular object
 
-┌──────────────────┬───────────┐
+
 | Name             | Ops / sec |
-├──────────────────┼───────────┤
-| nanocopy         | 1,464,237 |
-├──────────────────┼───────────┤
+| ---------------- | --------- |
+| nano-copy        | 1,464,237 |
 | fast-copy        | 955,628   |
-├──────────────────┼───────────┤
 | deepclone        | 620,598   |
-├──────────────────┼───────────┤
 | ramda            | 598,227   |
-├──────────────────┼───────────┤
 | lodash.cloneDeep | 480,912   |
-├──────────────────┼───────────┤
 | clone            | 471,526   |
-├──────────────────┼───────────┤
 | fast-clone       | 0         |
-└──────────────────┴───────────┘
+
 
 
 ### averages
 
 | Name             | Ops / sec |
 | ---------------- | --------- |
-| nanocopy         | 1,607.397 |
+| nano-copy        | 1,607.397 |
 | fast-copy        | 1,231.544 |
 | lodash.cloneDeep | 562.028   |
 | clone            | 445.612   |
