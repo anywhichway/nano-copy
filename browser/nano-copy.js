@@ -56,7 +56,7 @@
 		return clone;
 	}
 	if(typeof(module)!=="undefined") {
-		module.nanoCopy = nanoCopy;
+		module.exports = nanoCopy;
 		nanoCopy.nanoCopy = nanoCopy;
 	}
 	if(typeof(globalThis)!=="undefined") {
