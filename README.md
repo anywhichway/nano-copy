@@ -48,7 +48,7 @@ Types returned by `typeof` plus,
 
 1) Non-standard keys on Arrays
 
-2) Properties not enumerated by `Object.entries`.
+2) Non-enumerable properties
 
 ## API
 
@@ -58,4 +58,6 @@ const copy = nanoCopy(source);
 
 ## Release History (Reverse Chronological Order)
 
-2020-12-09 v0.0.1 Initial public release (BETA)
+2020-12-10 v0.0.2b Replaced Object.entries(data) with for(const key in data). Faster and gets inherited properties.
+
+2020-12-09 v0.0.1b Initial public release (BETA)

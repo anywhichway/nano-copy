@@ -48,10 +48,10 @@
 			}
 			clone = Object.create(Object.getPrototypeOf(data));
 			cloned.set(data,clone);
-			Object.entries(data).reduce((accum,[key,value]) => { 
-				accum[key] = nanoCopy(value,options,cloned);
-				return accum;
-			},clone);
+			for(const key in data) {
+				const value = data[key];
+				clone[key] = nanoCopy(value,options,cloned);
+			}
 		}
 		return clone;
 	}
