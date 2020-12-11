@@ -145,7 +145,6 @@ due to browser, operating system, and garbage collection driven impacts.
 │ fast-clone       │ 323.623   │
 └──────────────────┴───────────┘
 
-
 ## Release History (Reverse Chronological Order)
 
 2020-12-10 v0.0.3b Fixed node export. Added benchee benchmarks.
