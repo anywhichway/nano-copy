@@ -1,6 +1,6 @@
 {
   "name": "nano-copy",
-  "version": "0.0.2b",
+  "version": "0.0.3b",
   "description": "Superfast, super small JavaScript object deep copy.",
   "main": "index.js",
   "client": "./browser/nano-copy.js",
@@ -28,13 +28,20 @@
   },
   "homepage": "https://github.com/anywhichway/nano-copy#readme",
   "devDependencies": {
+    "benchee": "^1.1.0",
     "benchtest": "^2.0.7",
     "blanket": "^1.2.3",
     "chai": "^4.2.0",
+    "cli-table2": "^0.2.0",
+    "clone": "^2.1.2",
     "codacy-coverage": "^3.4.0",
     "codeclimate-test-reporter": "^0.5.1",
+    "deepclone": "^1.0.2",
+    "fast-clone": "^1.5.13",
     "fast-copy": "^2.1.0",
-    "mocha": "^8.0.1"
+    "lodash": "^4.17.20",
+    "mocha": "^8.0.1",
+    "ramda": "^0.27.1"
   },
   "dependencies": {}
 }

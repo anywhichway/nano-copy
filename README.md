@@ -1,6 +1,7 @@
 # nano-copy
 
-Superfast, super small (1,327 bytes minimized, 647 gzipped) JavaScript object deep copy. Comparable to fast-copy in speed across multiple runs in browser.
+Superfast, super small (1,327 bytes minimized, 647 gzipped) JavaScript object deep copy. 
+Comparable to fast-copy in speed across multiple test runs.
 
 ## Usage
 
@@ -56,7 +57,98 @@ Types returned by `typeof` plus,
 const copy = nanoCopy(source);
 ```
 
+## Benchmarks
+
+Note, ALL JavaScript benchmarks in a browser or Node.js or Deno should be taken with a grain of salt when packages are within 10 ro 15% of each other
+due to browser, operating system, and garbage collection driven impacts.
+
+
+### simple object.
+
+┌──────────────────┬───────────┐
+│ Name             │ Ops / sec │
+├──────────────────┼───────────┤
+│ nanocopy         │ 3,022,398 │
+├──────────────────┼───────────┤
+│ fast-copy        │ 2,442,471 │
+├──────────────────┼───────────┤
+│ lodash.cloneDeep │ 1,028,148 │
+├──────────────────┼───────────┤
+│ clone            │ 996,120   │
+├──────────────────┼───────────┤
+│ fast-clone       │ 650,103   │
+├──────────────────┼───────────┤
+│ deepclone        │ 576,936   │
+├──────────────────┼───────────┤
+│ ramda            │ 562,043   │
+└──────────────────┴───────────┘
+
+## complex object.
+
+┌──────────────────┬───────────┐
+│ Name             │ Ops / sec │
+├──────────────────┼───────────┤
+│ nanocopy         │ 77,088    │
+├──────────────────┼───────────┤
+│ ramda            │ 68,791    │
+├──────────────────┼───────────┤
+│ deepclone        │ 66,892    │
+├──────────────────┼───────────┤
+│ fast-copy        │ 66,825    │
+├──────────────────┼───────────┤
+│ fast-clone       │ 44,917    │
+├──────────────────┼───────────┤
+│ clone            │ 33,022    │
+├──────────────────┼───────────┤
+│ lodash.cloneDeep │ 24,610    │
+└──────────────────┴───────────┘
+
+
+### circular object
+
+┌──────────────────┬───────────┐
+│ Name             │ Ops / sec │
+├──────────────────┼───────────┤
+│ nanocopy         │ 1,464,237 │
+├──────────────────┼───────────┤
+│ fast-copy        │ 955,628   │
+├──────────────────┼───────────┤
+│ deepclone        │ 620,598   │
+├──────────────────┼───────────┤
+│ ramda            │ 598,227   │
+├──────────────────┼───────────┤
+│ lodash.cloneDeep │ 480,912   │
+├──────────────────┼───────────┤
+│ clone            │ 471,526   │
+├──────────────────┼───────────┤
+│ fast-clone       │ 0         │
+└──────────────────┴───────────┘
+
+
+### averages
+
+┌──────────────────┬───────────┐
+│ Name             │ Ops / sec │
+├──────────────────┼───────────┤
+│ nanocopy         │ 1,607.397 │
+├──────────────────┼───────────┤
+│ fast-copy        │ 1,231.544 │
+├──────────────────┼───────────┤
+│ lodash.cloneDeep │ 562.028   │
+├──────────────────┼───────────┤
+│ clone            │ 445.612   │
+├──────────────────┼───────────┤
+│ deepclone        │ 389.008   │
+├──────────────────┼───────────┤
+│ ramda            │ 382.105   │
+├──────────────────┼───────────┤
+│ fast-clone       │ 323.623   │
+└──────────────────┴───────────┘
+
+
 ## Release History (Reverse Chronological Order)
+
+2020-12-10 v0.0.3b Fixed node export. Added benchee benchmarks.
 
 2020-12-10 v0.0.2b Replaced Object.entries(data) with for(const key in data). Faster and gets inherited properties.
 
