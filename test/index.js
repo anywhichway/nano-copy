@@ -130,5 +130,14 @@ describe("Test",function() {
 	it("circular fast-copy for performance #",function() {
 		copy(circularObject)
 	});
+	it("non-standard",function() {
+		const array = new Int32Array([1,2]);
+		array.extra = "extra";
+		const copy = nanoCopy(array,{nonStandard:true});
+		expect(copy!==array).to.equal(true);
+		expect(copy.extra).to.equal(array.extra);
+		expect(copy.length).to.equal(array.length);
+		expect(copy.every((item,i) => item==array[i]));
+	})
 });
 

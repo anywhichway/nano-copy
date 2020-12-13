@@ -1,6 +1,6 @@
 # nano-copy
 
-Superfast, super small (1,327 bytes minimized, 647 gzipped) JavaScript object deep copy. 
+Superfast, super small (1,461 bytes minimized, 709 gzipped) JavaScript object deep copy. 
 Comparable to fast-copy in speed across multiple test runs.
 
 ## Usage
@@ -37,7 +37,7 @@ Or
 
 2) `Object.create(Object.getPrototypeOf(source))` plus interating over all entries in the `source` and assigning their copies to the newly created object is correct.
 
-## Direct Copy
+## Direct Copy, i.e. the same instance will be in the copy
 
 Types returned by `typeof` plus,
 
@@ -47,14 +47,18 @@ Types returned by `typeof` plus,
 
 ## Not Currently Supported
 
-1) Non-standard keys on Arrays
-
-2) Non-enumerable properties
+1) Non-enumerable properties
 
 ## API
 
 ```
 const copy = nanoCopy(source);
+```
+
+Or, to copy non-standard properties on Arrays and other built-in classes pass an optional argument. Note, there is a negative performance impact on long arrays.
+
+```
+const copy = nanoCopy(source,{nonStandard:true);
 ```
 
 ## Benchmarks
@@ -116,6 +120,8 @@ due to browser, operating system, and garbage collection driven impacts.
 
 
 ## Release History (Reverse Chronological Order)
+
+2020-12-13 v0.1.0 Added support for non-standard properties on Arrays and clonable objects.
 
 2020-12-10 v0.0.4b Documentation fixes.
 
