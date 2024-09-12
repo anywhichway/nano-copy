@@ -68,58 +68,61 @@ due to browser, operating system, and garbage collection driven impacts.
 
 ### simple object.
 
+
 | Name             | Ops / sec |
 | ---------------- | --------- |
-| nano-copy        | 3,022,398 |
-| fast-copy        | 2,442,471 |
-| lodash.cloneDeep | 1,028,148 |
-| clone            | 996,120   |
-| fast-clone       | 650,103   |
-| deepclone        | 576,936   |
-| ramda            | 562,043   |
+| nanocopy         | 6,114,025 |
+| fast-copy        | 4,913,596 |
+| lodash.cloneDeep | 2,497,153 |
+| clone            | 1,931,488 |
+| ramda            | 1,082,327 |
+| fast-clone       | 939,717   |
+| deepclone        | 933,128   |
+
 
 ### complex object.
 
 | Name             | Ops / sec |
 | ---------------- | --------- |
-| nano-copy        | 77,088    |
-| ramda            | 68,791    |
-| deepclone        | 66,892    |
-| fast-copy        | 66,825    |
-| fast-clone       | 44,917    |
-| clone            | 33,022    |
-| lodash.cloneDeep | 24,610    |
+| nanocopy         | 140,249   |
+| fast-copy        | 118,246   |
+| ramda            | 112,758   |
+| deepclone        | 103,544   |
+| fast-clone       | 68,412    |
+| clone            | 58,591    |
+| lodash.cloneDeep | 42,097    |
 
 
 ### circular object
 
-
 | Name             | Ops / sec |
 | ---------------- | --------- |
-| nano-copy        | 1,464,237 |
-| fast-copy        | 955,628   |
-| deepclone        | 620,598   |
-| ramda            | 598,227   |
-| lodash.cloneDeep | 480,912   |
-| clone            | 471,526   |
+| nanocopy         | 2,621,642 |
+| fast-copy        | 1,719,962 |
+| ramda            | 1,036,171 |
+| deepclone        | 967,305   |
+| clone            | 787,177   |
+| lodash.cloneDeep | 755,432   |
 | fast-clone       | 0         |
-
 
 
 ### averages
 
+
 | Name             | Ops / sec |
 | ---------------- | --------- |
-| nano-copy        | 1,607.397 |
-| fast-copy        | 1,231.544 |
-| lodash.cloneDeep | 562.028   |
-| clone            | 445.612   |
-| deepclone        | 389.008   |
-| ramda            | 382.105   |
-| fast-clone       | 323.623   |
+| nanocopy         | 2,997.136 |
+| fast-copy        | 2,221.935 |
+| lodash.cloneDeep | 1,160.977 |
+| clone            | 914.969   |
+| ramda            | 710.087   |
+| deepclone        | 585.068   |
+| fast-clone       | 447.621   |
 
 
 ## Release History (Reverse Chronological Order)
+
+2024-12-09 v0.1.1 Fixed issue related to objects potentially not having a constructor. Re-ran benchmarks.
 
 2020-12-13 v0.1.0 Added support for non-standard properties on Arrays and clonable objects.
 

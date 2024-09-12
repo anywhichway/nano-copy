@@ -1,13 +1,13 @@
 {
   "name": "nano-copy",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Superfast, super small JavaScript object deep copy.",
   "main": "index.js",
   "client": "./browser/nano-copy.js",
   "reveal": true,
   "isomorphic": true,
   "scripts": {
-    "prepublish": "cp index.js browser/nano-copy.js && npm run minify",
+    "prepublish": "copy index.js browser/nano-copy.js && npm run minify",
     "minify": "minify browser/nano-copy.js > browser/nano-copy.min.js"
   },
   "repository": {
@@ -34,14 +34,17 @@
     "chai": "^4.2.0",
     "cli-table2": "^0.2.0",
     "clone": "^2.1.2",
-    "codacy-coverage": "^3.4.0",
+    "codacy-coverage": "^2.0.3",
     "codeclimate-test-reporter": "^0.5.1",
     "deepclone": "^1.0.2",
     "fast-clone": "^1.5.13",
     "fast-copy": "^2.1.0",
-    "lodash": "^4.17.20",
-    "mocha": "^8.0.1",
-    "ramda": "^0.27.1"
+    "lodash": "^4.17.21",
+    "mocha": "^10.7.3",
+    "ramda": "^0.27.1",
+    "minify": "^11.4.0"
   },
-  "dependencies": {}
+  "dependencies": {
+
+  }
 }

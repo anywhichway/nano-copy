@@ -46,7 +46,7 @@
 			} else if(Array.isArray(data) && !nonStandard) {
 				clone = data.map((item) => nanoCopy(item,options,cloned));
 			} else {
-				if(data.constructor.from && !Array.isArray(data)) {
+				if(data.constructor && data.constructor.from && !Array.isArray(data)) {
 					try {
 						clone = data.constructor.from(data);
 						return clone;
